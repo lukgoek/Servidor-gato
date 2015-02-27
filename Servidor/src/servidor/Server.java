@@ -95,14 +95,15 @@ public class Server implements AvisaServer{
         for(int i =0; i<clientes.size(); i++){
             
             ClienteThread cliente = clientes.get(i);
-             
-            
-        
             
             if(nickname.equals(cliente.nickname)){
-                //NADA
+               //NADA
             }else{
-                cliente.enviarDatos(posicion);
+                System.out.println("ENVIA CLICK EN :"+posicion);
+                
+                cliente.enviarDatos("click/"+posicion);
+                
+                   
             }
             
             
@@ -162,6 +163,20 @@ public class Server implements AvisaServer{
                     setPlayers();
                 }
         
+    }
+
+    @Override
+    public void resetGame() {
+        for(int i=0; i<clientes.size(); i++){
+                 ClienteThread clientess = clientes.get(i);
+                 
+                 System.out.println("Envia RESET!");
+                 clientess.enviarDatos("reset/reset");
+             
+                
+             } 
+        
+    
     }
 
 

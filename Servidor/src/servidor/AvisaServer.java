@@ -19,6 +19,7 @@ interface AvisaServer extends EventListener{
     //Metodos a  heredar en servidos
     public void setPlayers();
     public void getPlayers();
+    public void resetGame();
     
     public void onClientTurn(String turn);
     public void onClientClick(String nickname, String posicion);

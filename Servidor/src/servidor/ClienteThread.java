@@ -94,8 +94,8 @@ public class ClienteThread   {
             
             /**********  GUARDA EL NICKNAME *********/
             
-            if(comandos[0].equals("nick")){
-                this.nickname = comandos[1];
+            if(comandos[1].equals("nick")){
+                this.nickname = comandos[2];
                 this.avisaServer.getPlayers();
                 System.out.println("NICK NAME" +this.nickname);
                 
@@ -116,16 +116,24 @@ public class ClienteThread   {
             
             
             /******** TURNO so se ejecuta una vez ********/
-            if(comandos[0].equals(this.nickname)){
+          /*  if(comandos[0].equals(this.nickname)){
             
                 this.avisaServer.onClientTurn(comandos[0]); 
                 
-            }
+            }*/
             
             /***** CLICK ******/
             if(comandos[1].equals("click")){
-            
+                
+                System.out.println("RESIBE CLICK EN :"+comandos[2]);
+                                                //nickname,   posicion de boton
                 this.avisaServer.onClientClick(comandos[0], comandos[2]);    
+                
+            }
+            
+            if(comandos[1].equals("reset")){
+                
+                this.avisaServer.resetGame();
             }
             
             
