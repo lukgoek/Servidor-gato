@@ -20,6 +20,7 @@ import java.util.logging.Logger;
  *
  * @author Humberto Lugo
  */
+
 public class Server implements AvisaServer{
     
     
@@ -56,9 +57,7 @@ public class Server implements AvisaServer{
                 
                 System.out.println("usuario numero :"+clientes.size());
                
-                if(clientes.size() == 2){
-                    setPlayers();
-                }
+                
                
             }
             
@@ -129,22 +128,42 @@ public class Server implements AvisaServer{
 
     @Override
     public void setPlayers() {
+        String nicnkname1 ="", nickname2 ="";
+        
         for(int i =0; i<clientes.size(); i++){
             
             ClienteThread cliente = clientes.get(i);
-             if(i == 0){
-                cliente.enviarDatos("player1"+"/"+cliente.nickname);
+            
+            if(i == 0 && nicnkname1.equals("")){
+                nicnkname1 = cliente.nickname;
                  
              }
              
              if(i == 1){
-                cliente.enviarDatos("player2"+"/"+cliente.nickname);
+                nickname2 = cliente.nickname;
                  
              }
+             
+             for(int j =0; j<clientes.size(); j++){
+                 ClienteThread clientess = clientes.get(j);
+             
+                clientess.enviarDatos("player1"+"/"+nicnkname1);
+                clientess.enviarDatos("player2"+"/"+nickname2);
+             }   
+             
             
         }
         
     }
+    @Override
+    public void getPlayers() {
+        
+        if(clientes.size() == 2){
+                    setPlayers();
+                }
+        
+    }
+
 
    
 

@@ -96,6 +96,7 @@ public class ClienteThread   {
             
             if(comandos[0].equals("nick")){
                 this.nickname = comandos[1];
+                this.avisaServer.getPlayers();
                 System.out.println("NICK NAME" +this.nickname);
                 
             }
